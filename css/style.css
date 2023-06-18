@@ -57,19 +57,18 @@ header {
   font-family: "Kanit", sans-serif;
   padding-left: 3em;
 }
-.info div:nth-child(1) {
+.info > div {
   display: flex;
   row-gap: 1em;
-  flex-direction: column;
 }
-.info div:nth-child(1) > span {
+.info > div > span {
   font-size: 8vh;
   border-bottom: 2px solid white;
 }
 /* pop up styling */
 .hidden {
   display: none;
-  transition: 0.3s;
+  transition: display 1s ease-in-out;
 }
 .popup_container {
   display: flex;
@@ -120,7 +119,30 @@ button:hover {
   position: absolute;
   z-index: 1;
 }
-
+.resetNames{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 2em;
+  align-items: center;
+}
+.resetNames h1{
+  display: none;
+}
+#resetNames{
+  display: none;
+  padding: 10px;
+  border: none;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  background-color: rgb(6, 168, 168);
+  color: white;
+}
+#resetNames:hover {
+  background-color: rgb(18, 232, 232);
+}
 /* utility classes  */
 .bt-0 {
   border-top: 0;
@@ -180,12 +202,6 @@ button:hover {
   .info div:nth-child(1) > span {
     font-size: 6vh;
   }
-  .popup h1 {
-    font-size: 1.7em;
-  }
-  .popup h2 > span {
-    display: none;
-  }
   .popup {
     width: 60vh;
     height: 50vh;
@@ -203,5 +219,9 @@ button:hover {
   .popup img {
     width: 55vh;
     height: 50vh;
+  }
+  .resetNames h1{
+    display: none;
+    font-size: 1.6em;
   }
 }
