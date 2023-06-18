@@ -66,7 +66,42 @@ header {
   font-size: 8vh;
   border-bottom: 2px solid white;
 }
-.info div:nth-child(1) > button {
+/* pop up styling */
+.hidden {
+  display: none;
+  transition: 0.3s;
+}
+.popup_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.505);
+}
+.popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 30px;
+  color: white;
+  height: 60vh;
+  width: 70vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 10px;
+  background-color: rgba(17, 17, 17, 0.822);
+}
+.popup h1 {
+  border-bottom: 2px solid white;
+  z-index: 2;
+}
+.popup h2 {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bolder;
+  z-index: 3;
+}
+button {
+  z-index: 4;
   padding: 10px;
   border: none;
   font-weight: bold;
@@ -76,8 +111,14 @@ header {
   background-color: rgb(6, 168, 168);
   color: white;
 }
-.info div:nth-child(1) > button:hover {
+button:hover {
   background-color: rgb(18, 232, 232);
+}
+.popup img {
+  width: 70vh;
+  height: 60vh;
+  position: absolute;
+  z-index: 1;
 }
 
 /* utility classes  */
@@ -116,9 +157,9 @@ header {
   }
 }
 @media (max-width: 512px) {
-    header h1{
-        text-align: center;
-    }
+  header h1 {
+    text-align: center;
+  }
   .main {
     height: 100vh;
   }
@@ -136,8 +177,31 @@ header {
   .info div:nth-child(1) {
     row-gap: 0;
   }
-.info div:nth-child(1) > span {
-  font-size: 6vh;
-
+  .info div:nth-child(1) > span {
+    font-size: 6vh;
+  }
+  .popup h1 {
+    font-size: 1.7em;
+  }
+  .popup h2 > span {
+    display: none;
+  }
+  .popup {
+    width: 60vh;
+    height: 50vh;
+  }
+  .popup img {
+    width: 60vh;
+    height: 50vh;
+  }
 }
+@media (max-width: 432px) {
+  .popup {
+    width: 55vh;
+    height: 50vh;
+  }
+  .popup img {
+    width: 55vh;
+    height: 50vh;
+  }
 }

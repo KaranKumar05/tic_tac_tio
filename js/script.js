@@ -1,7 +1,7 @@
-let click = new Audio('./sounds/click.mp3');
-let gameOver = new Audio('./sounds/gameWon.mp3');
+let click = new Audio('./media/click.mp3');
+let gameOver = new Audio('./media/gameWon.mp3');
 let isgameOver = false;
-// Random function wil decide the turn 
+// plyers name input 
 let turn = 'X';
 
 
@@ -25,14 +25,29 @@ function cheakWin() {
     ]
     win.forEach(e => {
         if ((text[e[0]].innerText === text[e[1]].innerText) && (text[e[2]].innerText === text[e[1]].innerText) && (text[e[0]].innerText !== "")) {
-            document.querySelector('.gameInfo').innerText = `${text[e[0]].innerText} has won`;            
-            // alert(text[e[0]].innerText + "won");
+            document.querySelector('.gameInfo').innerText = `${text[e[0]].innerText} has won`;
             isgameOver = true;
+            gameOver.play();
+
+            if (isgameOver = true) {
+                let container = document.querySelector('.main');
+                let header = document.querySelector('header');
+                let hiddenElements = document.getElementsByClassName("hidden");
+                for (let i = 0; i < hiddenElements.length; i++) {
+                    hiddenElements[i].style.display = "block";
+                    hiddenElements[i].style.transition = ".5s";
+                    document.querySelector("#popupWon").innerText =text[e[0]].innerText;
+                    header.style.display = "none";
+                    container.style.display = "none";
+                }
+                let resetBtn = document.querySelector("#reset");
+                resetBtn.addEventListener("click", () => {
+                    location.reload();
+                });
+            }
         }
     })
-
 }
-
 //Game Win logic 
 let boxes = document.getElementsByClassName('box');
 Array.from(boxes).forEach(element => {
@@ -46,9 +61,6 @@ Array.from(boxes).forEach(element => {
             if (!isgameOver) {
                 document.getElementsByClassName("gameInfo")[0].innerText = `Turn for ${turn}`;
             }
-
         }
-
     })
-
 })
